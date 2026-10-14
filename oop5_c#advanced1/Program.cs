@@ -50,6 +50,149 @@
             //d) What happens if a declared partial method has no implementation?
             // the compiler removes its declaration and any calls to it from the final code.
             #endregion
+
+
+            #region Make sure all functionality from Assignment 04 still works
+            DeliveryAddress address = new DeliveryAddress("Alexandria", "123 Main St", 21500);
+
+            StandardShipment standard = new StandardShipment("SH001", "Books", 3.0m, 50.0m, address);
+
+            ExpressShipment express = new ExpressShipment("SH002", "Mobile Phone", 1.5m, 60.0m, address, 20.0m);
+
+            InternationalShipment international = new InternationalShipment("SH003", "Laptop", 2.5m, 100.0m, address, "Canada", 150.0m);
+
+            DeliveryCenter center = new DeliveryCenter("Alexandria Hub");
+            center.AddShipment(standard);
+            center.AddShipment(express);
+            center.AddShipment(international);
+
+            Console.WriteLine("Delivery Center");
+            Console.WriteLine();
+
+            center.PrintAllShipments();
+
+            Console.WriteLine("Tracking Status");
+            Console.WriteLine();
+
+            center.PrintTrackingStatuses();
+
+            Console.WriteLine("Insurance");
+            Console.WriteLine();
+
+            Console.Write("Standard Shipment Insurance : ");
+            DeliveryReport.PrintInsurance(standard);
+
+            Console.Write("Express Shipment Insurance  : ");
+            DeliveryReport.PrintInsurance(express);
+
+            Console.Write("International Shipment Insurance : ");
+            DeliveryReport.PrintInsurance(international);
+
+            Console.WriteLine("ITrackable Array - Tracking Statuses");
+
+            ITrackable[] trackableShipments = new ITrackable[] { standard, express, international };
+
+            foreach (ITrackable trackable in trackableShipments)
+            {
+                Console.WriteLine(trackable.GetTrackingStatus());
+            }
+
+            Console.WriteLine("IInsurable Array - Insurance Values");
+
+            IInsurable[] insurableShipments = new IInsurable[] { standard, express, international };
+
+            foreach (IInsurable insurable in insurableShipments)
+            {
+                Console.WriteLine($"Insurance Value: {insurable.CalculateInsurance()} EGP");
+            }
+            #endregion
+
+            #region Demonstrate reference assignment between two shipment variables.
+            StandardShipment shipment1 = new StandardShipment("0021", "Book", 2.0m, 40.0m, address);
+
+            Shipment shipment2 = shipment1;
+
+            Console.WriteLine("Before Modification");
+            Console.WriteLine($"Shipment 1 Weight: {shipment1.Weight} KG");
+            Console.WriteLine($"Shipment 2 Weight: {shipment2.Weight} KG");
+
+            shipment2.UpdateWeight(5.5m);
+
+            Console.WriteLine("\n After Modifying Weight via Shipment 2");
+            Console.WriteLine($"Shipment 1 Weight: {shipment1.Weight} KG");
+            Console.WriteLine($"Shipment 2 Weight: {shipment2.Weight} KG");
+
+            bool isSameObject = ReferenceEquals(shipment1, shipment2);
+            Console.WriteLine($" {isSameObject}");
+            #endregion
+
+            #region Create a Shallow Copy using MemberwiseClone().
+
+            Console.WriteLine("shallow copy demonstration");
+
+            StandardShipment shallowOriginal = new StandardShipment("0133", "tablet", 1.2m, 35.0m, address);
+
+            Shipment shallowCopied = shallowOriginal.ShallowCopy();
+
+            bool isSameShipment = ReferenceEquals(shallowOriginal, shallowCopied);
+            Console.WriteLine($"{isSameShipment}"); // false cause we just copied the reference of the original object
+
+            Console.WriteLine($"Original Tracking Code : {shallowOriginal.TrackingCode}");
+            Console.WriteLine($"Copied Tracking Code   : {shallowCopied.TrackingCode}");
+
+            #endregion
+
+            #region Demonstrate that the shallow copy shares the same DeliveryAddress.
+
+            Console.WriteLine("\n shallow copy demonstration2");
+            bool isSameAddress = ReferenceEquals(shallowOriginal.Destination, shallowCopied.Destination);
+            Console.WriteLine($" {isSameAddress}");
+
+            Console.WriteLine($"\nBefore Address Change Original City: {shallowOriginal.Destination.City}");
+
+            shallowCopied.Destination.City = "el minia";
+
+            Console.WriteLine($"After Changing City via Copied Shipment : {shallowOriginal.Destination.City}");
+
+            #endregion
+
+            #region Create a Deep Copy
+
+            Console.WriteLine("deep copy demonstration");
+
+            StandardShipment deepOriginal = new StandardShipment("55", "Laptop", 2.5m, 100.0m, new DeliveryAddress("Alexandria", "fouad St", 10));
+
+            Shipment deepCopied = deepOriginal.DeepCopy();
+
+            bool isSameShipmentDeep = ReferenceEquals(deepOriginal, deepCopied);
+            Console.WriteLine($"{isSameShipmentDeep}");
+
+            #endregion
+
+            #region Demonstrate that the deep copy has an independent DeliveryAddress.
+
+            Console.WriteLine("\nIndependent DeliveryAddress Demonstration");
+
+            bool isSameAddressDeep = ReferenceEquals(deepOriginal.Destination, deepCopied.Destination);
+            Console.WriteLine($"{isSameAddressDeep}");
+
+            Console.WriteLine($"\nBefore Address Change to Original City: {deepOriginal.Destination.City}");
+
+            deepCopied.Destination.City = "aswan";
+
+            Console.WriteLine($"After Changing City via Deep Copied Shipment:");
+            Console.WriteLine($"  Original City: {deepOriginal.Destination.City}");
+            Console.WriteLine($"  Copied City  : {deepCopied.Destination.City}");
+            #endregion
+
+            #region  Add and demonstrate the static shipment counter and the static constructor.
+            Console.WriteLine("\n Static Constructor Demonstration ");
+
+            Console.WriteLine($"Total Shipments Created: {Shipment.TotalShipmentsCreated}");
+            #endregion
+
+           
+
         }
-    }
-}
+    } }
+
