@@ -51,6 +51,26 @@
             // the compiler removes its declaration and any calls to it from the final code.
             #endregion
 
+            #region Theoretical Questions - c# advanced
+            //Q1: What is a generic class? Why use generics?
+            //generic class uses type parameters like `<T>` so we can decide the data type when creating an object.
+            //generics make code reusable with different data types, help catch type errors at compile time, improve performance by avoiding unnecessary boxing, keep the code cleaner and easier to work with.
+
+
+            //Q2: Write a generic class Container<T> with Add and Get methods.
+            // public class Container<T>
+            // {
+            //  private T _item; 
+
+            //public void Add(T item){_item = item;}
+            //public T Get(){ return _item;}
+            // }
+
+
+            //Q3:What are multiple type parameters? Write Pair<TKey, TValue>.
+            // multiple type parameters allow a generic class or method to work with more than one type.
+            #endregion
+
             #region Make sure all functionality from Assignment 04 still works
             DeliveryAddress address = new DeliveryAddress("Alexandria", "123 Main St", 21500);
 
