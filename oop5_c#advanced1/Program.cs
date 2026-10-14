@@ -65,30 +65,41 @@
             center.AddShipment(standard);
             center.AddShipment(express);
             center.AddShipment(international);
+            DeliveryUtilities.PrintSeparator();
 
             Console.WriteLine("Delivery Center");
             Console.WriteLine();
+            DeliveryUtilities.PrintSeparator();
 
             center.PrintAllShipments();
+            DeliveryUtilities.PrintSeparator();
 
             Console.WriteLine("Tracking Status");
             Console.WriteLine();
+            DeliveryUtilities.PrintSeparator();
 
             center.PrintTrackingStatuses();
+            DeliveryUtilities.PrintSeparator();
 
             Console.WriteLine("Insurance");
             Console.WriteLine();
+            DeliveryUtilities.PrintSeparator();
 
             Console.Write("Standard Shipment Insurance : ");
             DeliveryReport.PrintInsurance(standard);
+            DeliveryUtilities.PrintSeparator();
 
             Console.Write("Express Shipment Insurance  : ");
             DeliveryReport.PrintInsurance(express);
+            DeliveryUtilities.PrintSeparator();
 
             Console.Write("International Shipment Insurance : ");
             DeliveryReport.PrintInsurance(international);
+            DeliveryUtilities.PrintSeparator();
 
             Console.WriteLine("ITrackable Array - Tracking Statuses");
+            DeliveryUtilities.PrintSeparator();
+            DeliveryUtilities.PrintSeparator();
 
             ITrackable[] trackableShipments = new ITrackable[] { standard, express, international };
 
@@ -98,6 +109,7 @@
             }
 
             Console.WriteLine("IInsurable Array - Insurance Values");
+            DeliveryUtilities.PrintSeparator();
 
             IInsurable[] insurableShipments = new IInsurable[] { standard, express, international };
 
@@ -111,22 +123,26 @@
             StandardShipment shipment1 = new StandardShipment("0021", "Book", 2.0m, 40.0m, address);
 
             Shipment shipment2 = shipment1;
+            DeliveryUtilities.PrintSeparator();
 
             Console.WriteLine("Before Modification");
             Console.WriteLine($"Shipment 1 Weight: {shipment1.Weight} KG");
             Console.WriteLine($"Shipment 2 Weight: {shipment2.Weight} KG");
 
             shipment2.UpdateWeight(5.5m);
+            DeliveryUtilities.PrintSeparator();
 
             Console.WriteLine("\n After Modifying Weight via Shipment 2");
             Console.WriteLine($"Shipment 1 Weight: {shipment1.Weight} KG");
             Console.WriteLine($"Shipment 2 Weight: {shipment2.Weight} KG");
+            DeliveryUtilities.PrintSeparator();
 
             bool isSameObject = ReferenceEquals(shipment1, shipment2);
             Console.WriteLine($" {isSameObject}");
             #endregion
 
             #region Create a Shallow Copy using MemberwiseClone().
+            DeliveryUtilities.PrintSeparator();
 
             Console.WriteLine("shallow copy demonstration");
 
@@ -139,10 +155,12 @@
 
             Console.WriteLine($"Original Tracking Code : {shallowOriginal.TrackingCode}");
             Console.WriteLine($"Copied Tracking Code   : {shallowCopied.TrackingCode}");
+            DeliveryUtilities.PrintSeparator();
 
             #endregion
 
             #region Demonstrate that the shallow copy shares the same DeliveryAddress.
+            DeliveryUtilities.PrintSeparator();
 
             Console.WriteLine("\n shallow copy demonstration2");
             bool isSameAddress = ReferenceEquals(shallowOriginal.Destination, shallowCopied.Destination);
@@ -153,6 +171,7 @@
             shallowCopied.Destination.City = "el minia";
 
             Console.WriteLine($"After Changing City via Copied Shipment : {shallowOriginal.Destination.City}");
+            DeliveryUtilities.PrintSeparator();
 
             #endregion
 
@@ -186,7 +205,10 @@
             #endregion
 
             #region  Add and demonstrate the static shipment counter and the static constructor.
+            DeliveryUtilities.PrintSeparator();
+
             Console.WriteLine("\n Static Constructor Demonstration ");
+            DeliveryUtilities.PrintSeparator();
 
             Console.WriteLine($"Total Shipments Created: {Shipment.TotalShipmentsCreated}");
             #endregion
@@ -198,6 +220,29 @@
 
             #endregion
 
+            #region Create and use DeliveryUtilities
+
+            DeliveryUtilities.PrintSeparator();
+
+            Console.WriteLine("Demonstrating DeliveryUtilities");
+
+            DeliveryUtilities.PrintSeparator();
+            #endregion
+
+            #region Create and use ShipmentExtensions
+            Console.WriteLine("\nCreate and use ShipmentExtensions Demonstration");
+            DeliveryUtilities.PrintSeparator();
+            StandardShipment extShipment = new StandardShipment("SH_EXT11", "lectronics", 2.9m, 41.0m, address);
+
+            string summary = extShipment.GetSummary();
+            Console.WriteLine($"Summary     : {summary}");
+
+            bool deliveredStatus = extShipment.IsDelivered();
+            Console.WriteLine($"Is Delivered: {deliveredStatus}");
+
+            #endregion
+
         }
+
     } }
 
