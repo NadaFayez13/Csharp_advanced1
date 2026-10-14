@@ -129,5 +129,12 @@ namespace oop5_c_advanced1
 
 
         public abstract void PrintShipment();
+
+        partial void OnTrackingStatusChanged(string newStatus)
+        {
+            Console.WriteLine($"Tracking status changed to: {newStatus}");
+        }
+
+
     }
 }

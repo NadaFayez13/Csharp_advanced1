@@ -6,8 +6,9 @@ namespace oop5_c_advanced1
 {
     public abstract partial class Shipment
     {
-       
         private string currentTrackingStatus = "Created";
+
+        partial void OnTrackingStatusChanged(string newStatus);
 
         public string CurrentTrackingStatus
         {
@@ -32,6 +33,8 @@ namespace oop5_c_advanced1
             {
                 CurrentTrackingStatus = newStatus;
             }
+
+            OnTrackingStatusChanged(newStatus);
         }
     }
 }
