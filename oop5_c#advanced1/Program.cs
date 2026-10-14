@@ -191,7 +191,12 @@
             Console.WriteLine($"Total Shipments Created: {Shipment.TotalShipmentsCreated}");
             #endregion
 
-           
+            #region  Call GetTotalShipmentsCreated().
+            Console.WriteLine("\n Call GetTotalShipmentsCreated()");
+            int totalCreated = Shipment.GetTotalShipmentsCreated();
+            Console.WriteLine($"Total Shipments Created : {totalCreated}");
+
+            #endregion
 
         }
     } }
