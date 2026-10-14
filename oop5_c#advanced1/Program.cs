@@ -21,6 +21,20 @@
             // d) What is a static class? Can you create an object from a static class?
             // static class is a class that can only contain static members and cannot be instantiated.
             // no cannot create an object from static class because it is not meant to be instantiated.
+
+
+            // Q4  Extension Methods
+            // a) What is an Extension Method?
+            // extension method is static method in static class that lets you add new methods to existing types without modifying them or using inheritance.
+
+            // b) What keyword must be used in the first parameter of an extension method?
+            // this
+
+            // c) Where must an extension method be declared?
+            // it must be declared in static class.
+
+            // d) Can an extension method access private members of the class it extends?
+            // no
             #endregion
         }
     }
