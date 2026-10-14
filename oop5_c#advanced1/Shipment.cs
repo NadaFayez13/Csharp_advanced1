@@ -51,6 +51,13 @@ namespace oop5_c_advanced1
 
             TotalShipmentsCreated++;
         }
+
+
+        public static int GetTotalShipmentsCreated()
+        {
+            return TotalShipmentsCreated;
+        }
+
         public string Description
         {
             get { return description; }
