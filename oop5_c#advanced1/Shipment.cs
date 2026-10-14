@@ -4,7 +4,7 @@ using System.Text;
 
 namespace oop5_c_advanced1
 {
-    public abstract class Shipment
+    public abstract partial class Shipment
     {
         public static int TotalShipmentsCreated { get; private set; } = 0;
 

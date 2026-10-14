@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace oop5_c_advanced1
+{
+    public abstract partial class Shipment
+    {
+       
+        private string currentTrackingStatus = "Created";
+
+        public string CurrentTrackingStatus
+        {
+            get { return currentTrackingStatus; }
+            protected set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    currentTrackingStatus = value;
+                }
+            }
+        }
+
+        public virtual string GetTrackingStatusInfo()
+        {
+            return $"Shipment {TrackingCode} Status: {CurrentTrackingStatus}";
+        }
+
+        public virtual void UpdateTrackingStatus(string newStatus)
+        {
+            if (!string.IsNullOrWhiteSpace(newStatus))
+            {
+                CurrentTrackingStatus = newStatus;
+            }
+        }
+    }
+}
