@@ -239,7 +239,29 @@
 
             bool deliveredStatus = extShipment.IsDelivered();
             Console.WriteLine($"Is Delivered: {deliveredStatus}");
+            #endregion
 
+
+            #region Demonstrate GetSummary()
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine("\nDemonstrate GetSummary()");
+
+            StandardShipment summaryShipment = new StandardShipment("SH001", "Standard Goods", 3.0m, 50.0m, address);
+
+            string shipmentSummary = summaryShipment.GetSummary();
+            Console.WriteLine(shipmentSummary);
+            DeliveryUtilities.PrintSeparator();
+            #endregion
+
+
+            #region Demonstrate IsDelivered()
+            Console.WriteLine("\nDemonstrate IsDelivered()");
+            StandardShipment deliveryShipment = new StandardShipment("SH002", "Clothes", 1.5m, 60.0m, address);
+            Console.WriteLine($"Is Delivered (Initial) : {deliveryShipment.IsDelivered()}");
+
+            deliveryShipment.UpdateTrackingStatus("Delivered");
+            Console.WriteLine($"Is Delivered (Updated) : {deliveryShipment.IsDelivered()}");
+            DeliveryUtilities.PrintSeparator();
             #endregion
 
         }
