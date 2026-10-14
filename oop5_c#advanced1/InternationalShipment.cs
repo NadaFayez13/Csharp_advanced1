@@ -83,9 +83,6 @@ namespace oop5_c_advanced1
                 CustomsFee
             );
         }
-
-
-
         public override void PrintShipment()
         {
             Console.WriteLine("International Shipment");

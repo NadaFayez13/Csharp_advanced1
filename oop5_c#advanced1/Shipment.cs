@@ -6,10 +6,13 @@ namespace oop5_c_advanced1
 {
     public abstract class Shipment
     {
+        public static int TotalShipmentsCreated { get; private set; } = 0;
+
         private string trackingCode;
         private string description;
         private decimal weight;
         private decimal deliveryFee;
+
 
         public string TrackingCode
         {
@@ -39,6 +42,8 @@ namespace oop5_c_advanced1
             Description = description;
             Weight = weight;
             DeliveryFee = deliveryFee;
+
+            TotalShipmentsCreated++;
         }
         public string Description
         {
