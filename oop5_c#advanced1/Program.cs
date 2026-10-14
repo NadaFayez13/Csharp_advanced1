@@ -51,7 +51,6 @@
             // the compiler removes its declaration and any calls to it from the final code.
             #endregion
 
-
             #region Make sure all functionality from Assignment 04 still works
             DeliveryAddress address = new DeliveryAddress("Alexandria", "123 Main St", 21500);
 
@@ -241,7 +240,6 @@
             Console.WriteLine($"Is Delivered: {deliveredStatus}");
             #endregion
 
-
             #region Demonstrate GetSummary()
             DeliveryUtilities.PrintSeparator();
             Console.WriteLine("\nDemonstrate GetSummary()");
@@ -253,7 +251,6 @@
             DeliveryUtilities.PrintSeparator();
             #endregion
 
-
             #region Demonstrate IsDelivered()
             Console.WriteLine("\nDemonstrate IsDelivered()");
             StandardShipment deliveryShipment = new StandardShipment("SH002", "Clothes", 1.5m, 60.0m, address);
@@ -264,7 +261,22 @@
             DeliveryUtilities.PrintSeparator();
             #endregion
 
-        }
+            #region Split Shipment into partial class files
+            Console.WriteLine("\n Split Shipment into Partial Class Files Demonstration");
 
-    } }
+            StandardShipment partialClassDemo = new StandardShipment("SH_23", "Laptops", 2.0m, 50.0m, address);
+            Console.WriteLine($"Tracking Code  : {partialClassDemo.TrackingCode}");
+
+            Console.WriteLine($"Tracking Status: {partialClassDemo.GetTrackingStatusInfo()}");
+            #endregion
+
+            #region Implement and demonstrate the partial method
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine("\n Implement and Demonstrate Partial Method");
+
+            StandardShipment partialMethodDemo = new StandardShipment("SH_78", "Accessories", 1.0m, 30.0m, address);
+            partialMethodDemo.UpdateTrackingStatus("Out For Delivery");
+            #endregion
+
+}}}
 
