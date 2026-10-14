@@ -8,6 +8,12 @@ namespace oop5_c_advanced1
     {
         public static int TotalShipmentsCreated { get; private set; } = 0;
 
+        static Shipment()
+        {
+            TotalShipmentsCreated = 0;
+            Console.WriteLine("Shipment System Initialized");
+        }
+
         private string trackingCode;
         private string description;
         private decimal weight;
